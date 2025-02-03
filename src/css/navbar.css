@@ -1,0 +1,51 @@
+/* Resetando margens e padding padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Estilo da Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.2); 
+  border-radius: 12px;
+}
+
+.navbar .logo h2 {
+  color: #fff;
+  font-size: 24px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+  transition: background-color .3s ease;
+}
+
+.nav-links li a:hover {
+  background-color:aquamarine;
+  border-radius: 8px;
+  transition: background-color .3s ease;
+
+}
