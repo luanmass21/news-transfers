@@ -1,6 +1,6 @@
 import { useState } from "react";
 // import { FaUser } from "react-icons/fa"; // Só mantive o ícone de usuário
-import '../css/screen.css';
+import '../css/login.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 

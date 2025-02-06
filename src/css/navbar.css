@@ -40,12 +40,42 @@ body {
   text-decoration: none;
   font-size: 18px;
   padding: 10px;
-  transition: background-color .3s ease;
+  border-radius: 16px;
+
+  transition: background-color .2s ease;
 }
 
 .nav-links li a:hover {
-  background-color:aquamarine;
-  border-radius: 8px;
+  background-color:rgb(22, 117, 85);
+  border-radius: 12px;
   transition: background-color .3s ease;
 
+}
+
+@media screen and (max-width: 607px) {
+  .navbar {
+   /* Mantém os itens empilhados */
+    align-items: center;
+    padding: 8px;
+  }
+
+  .navbar .logo h1 {
+    font-size: 16px; /* Reduz o tamanho do texto */
+    text-align: center;
+  }
+
+  .nav-links {
+    /* flex-direction: column; */
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-links li {
+    margin: 3px 0; /* Menor espaçamento */
+  }
+
+  .nav-links li a {
+    font-size: 14px; /* Diminui o tamanho dos links */
+    padding: 6px;
+  }
 }

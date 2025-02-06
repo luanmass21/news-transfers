@@ -8,7 +8,7 @@ const Navbar = () => {
         <h2>Football Weekly</h2>
       </div>
       <ul className="nav-links">
-        <li><a href="https://www.transfermarkt.com/navigation/transfersundgeruechte" target="_blank" rel="noopener noreferrer">More recently news</a></li>
+        <li><a href="https://www.transfermarkt.com/navigation/transfersundgeruechte" target="_blank" rel="noopener noreferrer">Recently news</a></li>
         <li><a href="">Transfers</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
