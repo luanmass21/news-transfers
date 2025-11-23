@@ -1,24 +1,30 @@
 
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import pkg from 'pg';
 const { Client } = pkg;  
 
-dotenv.config(); 
-/* eslint-disable */
+// dotenv.config(); 
+// /* eslint-disable */
+// const client = new Client({
+//   user: process.env.DB_USER,
+//   host: process.env.DB_HOST,
+//   database: process.env.DB_DATABASE,
+//   password: process.env.DB_PASSWORD,
+//   port: process.env.DB_PORT,
+// });
 const client = new Client({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  // eslint-disable-next-line no-undef
+  connectionString: process.env.DATABASE_URL,
 });
+
 
 client.connect();
 
 const app = express();
 // const PORT = 5000;
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 5000;
 
 
