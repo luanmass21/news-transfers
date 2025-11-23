@@ -14,9 +14,14 @@ const { Client } = pkg;
 //   password: process.env.DB_PASSWORD,
 //   port: process.env.DB_PORT,
 // });
+// const client = new Client({
+//   // eslint-disable-next-line no-undef
+//   connectionString: process.env.DATABASE_URL,
+// });
 const client = new Client({
   // eslint-disable-next-line no-undef
   connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
 });
 
 
