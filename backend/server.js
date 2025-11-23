@@ -25,23 +25,41 @@ app.use(express.json()); // Permite o backend entender JSON no corpo da requisi�
 
 // Endpoint para receber e-mails e salvar no banco de dados
 app.post('/enviar-email', async (req, res) => {
-    const { email } = req.body; // Pega o e-mail enviado do corpo da requisição
+  const { email } = req.body;
 
-    if (!email) {
-        return res.status(400).json({ error: "Email não enviado!" }); // Caso não tenha e-mail no corpo
+  if (!email) {
+    return res.status(400).json({ message: "Nenhum email fornecido." });
+  }
+
+  try {
+    // Verifica se o email já existe
+    const existing = await client.query(
+      'SELECT * FROM emails WHERE email = $1',
+      [email]
+    );
+
+    if (existing.rows.length > 0) {
+      return res.status(409).json({
+        message: "Este email já está cadastrado."
+      });
     }
 
-    // Insere o email no banco de dados
-    try {
-        await client.query('INSERT INTO emails (email) VALUES ($1)', [email]);
-        console.log(`📩 Email recebido: ${email}`);
-        
-        // Resposta para o frontend
-        res.json({ message: "Email recebido e salvo com sucesso!", email });
-    } catch (error) {
-        console.error("Erro ao salvar email no banco", error);
-        res.status(500).json({ error: "Erro ao salvar email no banco de dados" });
-    }
+    // Se não existir, salva
+    await client.query(
+      'INSERT INTO emails (email) VALUES ($1)',
+      [email]
+    );
+
+    return res.status(201).json({
+      message: "Email cadastrado com sucesso!"
+    });
+
+  } catch (error) {
+    console.error("Erro ao salvar email no banco", error);
+    return res.status(500).json({
+      message: "Erro no servidor."
+    });
+  }
 });
 
 // Endpoint para listar todos os e-mails armazenados

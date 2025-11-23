@@ -1,6 +1,8 @@
 import { useState } from "react";
 import '../css/login.css';
 import 'font-awesome/css/font-awesome.min.css';
+import MessageAlert from "../components/MessageAlert";
+
 
 const Login = () => {
   const [email, setEmail] = useState(""); // state to store user email
@@ -22,6 +24,10 @@ const Login = () => {
 
       const data = await response.json();
       setMessage(data.message); // show the backend response message
+      // faz a mensagem sumir depois de 3 segundos
+    setTimeout(() => {
+      setMessage("");
+    }, 2000);
 
     } catch (error) {
       console.error('error:', error);
@@ -32,12 +38,14 @@ const Login = () => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
-        <h1>Football Weekly</h1>
+        <h1>Futebol Semanal</h1>
         <br />
-        <h3>A newsletter with articles and latest player transfer news around the world.</h3>
+        {/* <h3>A newsletter with articles and latest player transfer news around the world.</h3> */}
+        <h3>Um Newsletter com artigos de notícias sobre transferências de futebol ao redor do mundo</h3>
         <div className="input-field">
           <i className="fa fa-envelope fa-2x" aria-hidden="true"></i>  
           <input
+
             type="email"
             placeholder="email"
             required
@@ -46,10 +54,11 @@ const Login = () => {
           />
         </div>
         <button type="submit">subscribe</button>
+      
+      <MessageAlert message={message} />
+
       </form>
 
-      {/* display the backend message */}
-      {message && <p>{message}</p>}
     </div>
   );
 };
